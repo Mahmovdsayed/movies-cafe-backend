@@ -30,6 +30,7 @@ export const signUpHandeler = async (req, res, next) => {
     secondName,
   });
   return res.status(201).json({
+    success: true,
     message: "User created successfully",
   });
 };
@@ -62,6 +63,7 @@ export const signInHandeler = async (req, res, next) => {
     { expiresIn: "30d" }
   );
   return res.status(200).json({
+    success: true,
     message: "User LoggedIn successfully",
     token,
   });
@@ -124,6 +126,7 @@ export const deleteAccount = async (req, res, next) => {
   const deleteUser = await User.findByIdAndDelete({ _id });
   if (!deleteUser) return next(new Error("delete fail"));
   res.status(200).json({
+    success: true,
     message: "User deleted successfully",
   });
 };
