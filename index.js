@@ -5,8 +5,8 @@ import { initiateApp } from './src/initiate-app.js'
 config({ path: './config/dev.config.env' })
 import cors from 'cors'
 
-app.use(cors())
+
 
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors())
 initiateApp(app, express)
