@@ -58,6 +58,7 @@ export const signInHandeler = async (req, res, next) => {
       secoundName: isEmailExists.secondName,
       verifed: isEmailExists.verifed,
       role: isEmailExists.role,
+      Userimage: isEmailExists.image
     },
     process.env.LOGIN_SIG,
     { expiresIn: "30d" }
