@@ -47,7 +47,18 @@ export const signInHandeler = async (req, res, next) => {
   const isPassMatched = bcrypt.compareSync(password, isEmailExists.password);
   if (!isPassMatched)
     return next(new Error("invalid login credentials", { cause: 404 }));
-
+  // user Data 
+  const userData = {
+    _id: isEmailExists._id,
+    email: isEmailExists.email,
+    username: isEmailExists.username,
+    firstName: isEmailExists.firstName,
+    secondName: isEmailExists.secondName,
+    verifed: isEmailExists.verifed,
+    role: isEmailExists.role,
+    image: isEmailExists.image,
+    gender: isEmailExists.gender
+  };
   // generate userToken (access Token)
   const token = jwt.sign(
     {
@@ -67,6 +78,7 @@ export const signInHandeler = async (req, res, next) => {
     success: true,
     message: "User LoggedIn successfully",
     token,
+    userData
   });
 };
 
