@@ -72,7 +72,7 @@ export const signInHandeler = async (req, res, next) => {
       Userimage: isEmailExists.image
     },
     process.env.LOGIN_SIG,
-    { expiresIn: "30d" }
+    { expiresIn: "365d" }
   );
   return res.status(200).json({
     success: true,
