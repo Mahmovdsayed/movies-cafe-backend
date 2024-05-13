@@ -85,7 +85,7 @@ export const signInHandeler = async (req, res, next) => {
 /// ================= USERDATA API =================
 export const getUserProfile = async (req, res, next) => {
   const { userId } = req.params;
-  const user = await User.findOne({ username: userId }).select([
+  const user = await User.findOne({ _id: userId }).select([
     "-password",
     "-email",
     "-_id",
