@@ -131,6 +131,7 @@ export const deletePost = async (req, res, next) => {
   const post = await postModel.findOneAndDelete({ addedBy: _id, _id: postId });
   if (!post) return next(new Error("post not found", { cause: 404 }));
   res.status(200).json({
+     success: true,
     message: "Deleted successfully",
   });
 };
