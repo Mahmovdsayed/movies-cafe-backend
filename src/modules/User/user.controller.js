@@ -99,6 +99,16 @@ export const getUserProfile = async (req, res, next) => {
   });
 };
 
+/// ================= ALLUSERDATA API =================
+export const getAllUsers = async (req, res, next) => {
+  const { userId } = req.params;
+  const users = await User.find().select(["-password", "-email"]);
+  res.json({
+    success: true,
+    message: "done",
+    data: users,
+  });
+};
 /// ============ UPDATE ACCOUNT========================
 export const updateAccount = async (req, res, next) => {
   const { username, email, age, gender, firstName, secondName } = req.body;
