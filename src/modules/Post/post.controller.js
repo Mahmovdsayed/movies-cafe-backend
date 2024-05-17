@@ -8,11 +8,11 @@ export const addPost = async (req, res, next) => {
   const { title, slug, imageUrl, type } = req.body;
   const { _id } = req.authUser;
   //create post
-  const slugAlreadyAddedBefore = await postModel.findOne({ title });
-  if (slugAlreadyAddedBefore) {
-    return res.status(500).json({
-      message: `${title} already in your list`,
-    });
+  const slugAlreadyAddedBefore = await postModel.findOne({ title, addedBy: _id });
+    if (slugAlreadyAddedBefore) {
+      return res.status(400).json({
+        message: `${title} is already in your list`,
+      });
   }
 
   const post = await postModel.create({
