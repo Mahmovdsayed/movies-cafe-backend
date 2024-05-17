@@ -16,6 +16,7 @@ router.post(
 );
 router.post("/login", expressAsyncHandler(userController.signInHandeler));
 router.get("/user/:userId",  expressAsyncHandler(userController.getUserProfile));
+router.get("/users",  expressAsyncHandler(userController.getAllUsers));
 router.put(
   "/update",
   auth(),
