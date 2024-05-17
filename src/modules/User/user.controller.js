@@ -103,9 +103,10 @@ export const getUserProfile = async (req, res, next) => {
 export const getAllUsers = async (req, res, next) => {
   const { userId } = req.params;
   const users = await User.find().select(["-password", "-email"]);
+  const userCount = await User.countDocuments();
   res.json({
     success: true,
-    message: "done",
+    count: userCount,
     data: users,
   });
 };
